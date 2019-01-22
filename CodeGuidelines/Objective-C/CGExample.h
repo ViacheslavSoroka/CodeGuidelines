@@ -26,7 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CGExample : NSObject <CGExampleDelegate>
 // readwrite can be omitted,
-// nullable/nonnull goes first, then atomic/nonatomic, then memory attribute
+// nullable/nonnull goes first, then atomic/nonatomic, then memory attribute.
+// Use one empty line after @property keyword, one before and after type.
 @property (nullable, nonatomic, strong) NSString *name;
 
 // readwrite can be omitted
@@ -43,6 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 // If you have too many parameters to fit on one line, giving each its own line is preferred.
 // If multiple lines are used, align each using the colon before the parameter.
 // Length of line is 100.
+// Use one space after +/- 
 + (instancetype)exampleWithName:(nullable NSString *)name
                            data:(NSData *)data
                       attribute:(nullable NSString *)attribute;

@@ -95,10 +95,15 @@ static const NSInteger kCGShortNameLength = 2;
     // If you use property getter more than once, save it in local variable.
     // It saves us from computed properties with hard logic.
     NSString *name = self.name;
-    if (name.length > kCGShortNameLength) {
+    if (name.length > kCGShortNameLength) { // Don't transfer brace is only one line is used
         
-    }
+    } // Start each else block at new line
     else if (!name.length) {
+        
+    } // If you have too long expression to fit it in one line, split it in a few lines
+    else if (self.data /* some very long line of code*/
+             && self.attribute)
+    { // If multiple lines are used, transfer brase to the new line.
         
     }
     else {
