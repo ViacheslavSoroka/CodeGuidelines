@@ -60,6 +60,7 @@ static const NSInteger kCGShortNameLength = 2;
 {
     if (self = [super init]) {
         // Use direct access to instance variables only in dealloc, init and accessors.
+        // Don't use properties in init and dealloc whenever it's possible.
         // In all other cases use properties.
         // It saves us from propblems with custom getters.
         _name = name;
@@ -72,8 +73,7 @@ static const NSInteger kCGShortNameLength = 2;
 
 #pragma mark - Accessors
 
-- (void)setName:(NSString *)name
-{
+- (void)setName:(NSString *)name {
     // Use direct access to instance variables only in dealloc, init and accessors.
     // In all other cases use properties.
     // It saves us from propblems with custom getters.
@@ -86,12 +86,12 @@ static const NSInteger kCGShortNameLength = 2;
 #pragma mark - Public Methods
 
 - (void)load {
-    [self prepareToLoading];
+    [self prepareForLoading];
 }
 
 #pragma mark - Private Methods
 
-- (void)prepareToLoading {
+- (void)prepareForLoading {
     // If you use property getter more than once, save it in local variable.
     // It saves us from computed properties with hard logic.
     NSString *name = self.name;
