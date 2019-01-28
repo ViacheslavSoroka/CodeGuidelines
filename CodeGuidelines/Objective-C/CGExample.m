@@ -115,6 +115,7 @@ static const NSInteger kCGShortNameLength = 2;
 - (void)prepareForLoading {
     // If you use property getter more than once, save it in local variable.
     // It saves us from computed properties with hard logic.
+    // Use dot notation to access property whenever it's possible.
     NSString *name = self.name;
     if (name.length > kCGShortNameLength) { // Don't transfer brace is only one line is used
         
