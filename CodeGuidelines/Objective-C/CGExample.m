@@ -22,7 +22,12 @@
 static const NSInteger kCGShortNameLength = 2;
 
 @interface CGExample ()
-@property (nonatomic, strong) NSString *attribute;
+// Use readwrite in interface extensions only to indicate, that this property is exposed to outside with
+// readonly attribute. It's your responsibility to handle declaration in .h and extension consistent.
+@property (nonatomic, strong, readwrite) NSString *attribute;
+
+// Private property. No need to use readwrite attribute.
+@property (nonatomic, strong) NSString *localizedData;
 
 @end
 
@@ -38,6 +43,18 @@ static const NSInteger kCGShortNameLength = 2;
 // Transfer brace to the new line if the method can't fit in one line
 {
     return [[[self alloc] initWithName:name data:data attribute:attribute] autorelease];
+}
+
++ (instancetype)reallyLongAndComplexMoreThanMy13InchDisplayExampleWithName:(nullable NSString *)name data:(NSData *)data attribute:(nullable NSString *)attribute
+// Transfer brace to the new line if the method can't fit in one line
+{
+    return nil;
+}
+
++ (instancetype)exampleWithName:(nullable NSString *)name reallyLongAndComplexMoreThanMy13InchDisplayData:(NSData *)data attribute:(nullable NSString *)attribute
+// Transfer brace to the new line if the method can't fit in one line
+{
+    return nil;
 }
 
 #pragma mark - Initializations and Deallocations
@@ -81,6 +98,10 @@ static const NSInteger kCGShortNameLength = 2;
         [_name release];
         _name = [name retain];
     }
+}
+
+- (NSObject *)memoryData {
+    return [NSObject new];
 }
 
 #pragma mark - Public Methods
