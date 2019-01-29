@@ -10,6 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// Names of enum's values should begin with the enum's name.
+// This approach simplifies choosing appropriate value
+// via autocompletion.
+typedef NS_ENUM(uint8_t, PROrderLayoutType) {
+    PROrderLayoutTypePhone = 0,
+    PROrderLayoutTypePhoneWithOtherIssues,
+    PROrderLayoutTypePadSingleColumn,
+    PROrderLayoutTypePadMultiColumn
+};
+
 /*
  General Rules:
  
@@ -18,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
     3. Class properties.
     4. Instance properties are in the end.
     5. Try to goup properties and methods by their logic or attributes. I.e., methods for
- initialization goes one by one and only after them goes other instance methods. 
+ initialization goes one by one and only after them goes other instance methods.
  
  */
 
@@ -30,10 +40,13 @@ NS_ASSUME_NONNULL_BEGIN
 // Leave one empty line after interface defclaration and first method
 @interface CGExample : NSObject <CGExampleDelegate>
 
-// If you have too many parameters to fit on one line, giving each its own line is preferred.
-// If multiple lines are used, align each using the colon before the parameter.
-// Length of line is 100.
-// Use one space after +/-
+// 1. If you have too many parameters to fit on one line, giving each its own line is preferred.
+// 2. If multiple lines are used, align each using the colon before the parameter.
+// 3. Length of line is ~100.
+// 4. One space after method's type sign (+/-).
+// 5. No space between return type's bracket and method's name.
+// 6. Methods/parameters names start with a small letter unless they’re abbreviations (like CID, UUID, etc.).
+// 5. Pointer sign (*) is detached from type.
 + (instancetype)exampleWithName:(nullable NSString *)name
                            data:(NSData *)data
                       attribute:(nullable NSString *)attribute;
@@ -54,10 +67,13 @@ reallyLongAndComplexMoreThanMy13InchDisplayData:(NSData *)data
                    attribute:(nullable NSString *)attribute;
 
 - (void)load;
+- (void)requestIssueDatesForCID:(NSString *)CID;
 
-// Readwrite must be omitted,
-// nullable/nonnull goes first, then atomic/nonatomic, then memory attribute.
-// Use one space character after @property keyword, one before and after type.
+// 1. Readwrite must be omitted.
+// 2. nullable/nonnull goes first, then atomic/nonatomic, then memory attribute.
+// 3. Use one space character after @property keyword, one before and after type.
+// 4. Property name start with a small letter unless it's an abbreviation (like CID, UUID, etc.).
+// 5. Pointer sign (*) is attached to the name.
 @property (nullable, nonatomic, strong) NSString *name;
 
 // Readwrite can be omitted
