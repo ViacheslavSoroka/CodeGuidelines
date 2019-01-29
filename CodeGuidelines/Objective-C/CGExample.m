@@ -110,6 +110,16 @@ static const NSInteger kCGShortNameLength = 2;
     [self prepareForLoading];
 }
 
+- (void)requestIssueDatesForCID:(NSString *)CID {
+    [self _requestIssueDatesForCID:CID];
+}
+
+// Use underscore character if there is a need in private method
+// with the same signature as an existing public one.
+- (void)_requestIssueDatesForCID:(NSString *)CID {
+    // internal logic
+}
+
 #pragma mark - Private Methods
 
 - (void)prepareForLoading {
