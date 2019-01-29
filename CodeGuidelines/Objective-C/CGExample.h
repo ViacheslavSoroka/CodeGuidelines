@@ -13,11 +13,22 @@ NS_ASSUME_NONNULL_BEGIN
 // Names of enum's values should begin with the enum's name.
 // This approach simplifies choosing appropriate value
 // via autocompletion.
+// Don't use bitmasks for enums.
 typedef NS_ENUM(uint8_t, PROrderLayoutType) {
     PROrderLayoutTypePhone = 0,
     PROrderLayoutTypePhoneWithOtherIssues,
     PROrderLayoutTypePadSingleColumn,
     PROrderLayoutTypePadMultiColumn
+};
+
+// Names of options' values should begin with the options' name.
+// This approach simplifies choosing appropriate value
+// via autocompletion.
+typedef NS_OPTIONS(uint8_t, PROrderLayoutOptions) {
+    PROrderLayoutOptionLayoutSubviews = 1 << 0,
+    PROrderLayoutOptionAllowUserInteraction = 1 << 1,
+    PROrderLayoutOptionBeginFromCurrentState = 1 << 2,
+    PROrderLayoutOptionRepeat = 1 << 3,
 };
 
 /*
