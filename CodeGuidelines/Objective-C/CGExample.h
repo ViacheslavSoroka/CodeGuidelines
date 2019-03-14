@@ -103,6 +103,11 @@ reallyLongAndComplexMoreThanMy13InchDisplayData:(NSData *)data
 // so we must omit memory attribute.
 @property (nonatomic, readonly) NSObject *memoryData;
 
+// Using readonly properties is more preferable than getters -(BOOL)isNavigationBarTransparent.
+// There is no big difference for Objective-C, but it makes Swift code shorter. Compare:
+// instance.isNavigationBarTransparent vs instance.isNavigationBarTransparent()
+@property (nonatomic, readonly, getter=isNavigationBarTransparent) BOOL navigationBarTransparent;
+
 @end // Leave one empty space before @end keyword
 
 NS_ASSUME_NONNULL_END

@@ -104,6 +104,10 @@ static const NSInteger kCGShortNameLength = 2;
     return [NSObject new];
 }
 
+- (BOOL)isNavigationBarTransparent {
+    return NO;
+}
+
 #pragma mark - Public Methods
 
 - (void)load {
